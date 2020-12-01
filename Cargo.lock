@@ -12,3 +12,10 @@ version = "0.1.0"
 dependencies = [
  "anyhow",
 ]
+
+[[package]]
+name = "aoc_2020_day_01_2"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+]
