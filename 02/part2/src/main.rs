@@ -17,7 +17,7 @@ fn main() -> anyhow::Result<()> {
 
             let first_matches = password.chars().nth(first - 1)? == target;
             let second_matches = password.chars().nth(second - 1)? == target;
-            if (first_matches || second_matches) && !(first_matches && second_matches) {
+            if first_matches ^ second_matches {
                 Some(())
             } else {
                 None
