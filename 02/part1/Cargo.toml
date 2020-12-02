@@ -1,5 +1,5 @@
 [package]
-name = "aoc-2020-day-01-1"
+name = "aoc-2020-day-02-1"
 version = "0.1.0"
 authors = ["Ivo Murrell <ivoivo@hey.com>"]
 edition = "2018"
@@ -8,3 +8,4 @@ edition = "2018"
 
 [dependencies]
 anyhow = "1.0.34"
+regex = "1.4.2"
