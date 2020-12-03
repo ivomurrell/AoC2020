@@ -7,6 +7,7 @@ fn main() -> anyhow::Result<()> {
     let tree_encounters = map
         .lines()
         .enumerate()
+        .skip(1)
         // Assume that all lines are the same length
         .filter(|(i, row)| row.as_bytes()[(i * 3) % pattern_length] == b'#')
         .count();
