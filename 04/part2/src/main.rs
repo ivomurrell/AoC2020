@@ -55,7 +55,6 @@ fn main() {
                 .all(|required_field| fields.iter().any(|field| field.0 == *required_field))
                 && fields.into_iter().all(field_validator)
         })
-        .inspect(|valid_passport| println!("valid: {}\n", valid_passport))
         .count();
     println!("{} valid passports found!", valid_count);
 }
