@@ -106,6 +106,10 @@ name = "aoc-2020-day-08-1"
 version = "0.1.0"
 
 [[package]]
+name = "aoc-2020-day-08-2"
+version = "0.1.0"
+
+[[package]]
 name = "lazy_static"
 version = "1.4.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
