@@ -26,21 +26,29 @@ fn main() {
         .expect("Could not find unsummable number");
 
     let num_length = numbers.len();
-    'outer: for i in 0..num_length {
-        for j in i..num_length {
-            let contiguous_iter = numbers[i..j].iter();
-            let contiguous_sum: u64 = contiguous_iter.clone().sum();
-            if contiguous_sum == *unsummable_num {
-                println!(
-                    "The numbers {:?} sum to {}, so the encryption weakness is {}!",
-                    numbers[i..j].to_vec(),
-                    unsummable_num,
-                    contiguous_iter.clone().min().unwrap() + contiguous_iter.clone().max().unwrap()
-                );
-                return;
-            } else if contiguous_sum > *unsummable_num {
-                continue 'outer;
+    let mut contiguous_length = 1;
+    for i in 0..num_length {
+        let mut contiguous_sum: u64 = numbers[i..i + contiguous_length].iter().sum();
+        while contiguous_sum < *unsummable_num {
+            if i + contiguous_length >= num_length - 1 {
+                contiguous_length -= 1;
+                continue;
+            } else {
+                contiguous_length += 1;
             }
+            contiguous_sum = numbers[i..i + contiguous_length].iter().sum();
+        }
+        let contiguous_iter = numbers[i..i + contiguous_length].iter();
+        if contiguous_sum == *unsummable_num {
+            println!(
+                "The numbers {:?} sum to {}, so the encryption weakness is {}!",
+                numbers[i..i + contiguous_length].to_vec(),
+                unsummable_num,
+                contiguous_iter.clone().min().unwrap() + contiguous_iter.clone().max().unwrap()
+            );
+            return;
+        } else {
+            contiguous_length -= 1;
         }
     }
     println!("Could not find encryption weakness");
